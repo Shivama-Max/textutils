@@ -1,37 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function About() {
-    const [myStyle,setMyStyle] = useState({
-        backgroundColor : "white",
-        color : "black"
-    });
-    const [buttonText, setButtonText] = useState("Dark Mode")
-    const toggleStyle = () =>{
-        if(myStyle.color === 'white'){
-            setMyStyle({
-                color: "black",
-                backgroundColor: "white"
-            })
-            setButtonText("Dark Mode");
-        }
-        else{
-            setMyStyle({
-                backgroundColor : "black",
-                color : "white",
-                border: "1px solid white"
-            })
-            setButtonText("Light Mode");
-        }
-    }
+export default function About(props) {
+    
   return (
-    <div className="div container mt-5 pb-2" style = {myStyle}>
+    <div className={`div container mt-5 pb-2 bg-${props.mode} text-${props.mode==='light'?'dark':'light'}`} >
         <h1>About Us</h1>
       <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button
-              class="accordion-button collapsed"
-              style = {myStyle}
+              class={`accordion-button collapsed bg-${props.mode} text-${props.mode==='light'?'dark':'white'}`}
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#flush-collapseOne"
@@ -46,7 +24,7 @@ export default function About() {
             class="accordion-collapse collapse"
             data-bs-parent="#accordionFlushExample"
           >
-            <div class="accordion-body" style = {myStyle}>
+            <div class={`accordion-body bg-${props.mode} text-${props.mode==='light'?'dark':'light'}`}>
               Placeholder content for this accordion, which is intended to
               demonstrate the <code>.accordion-flush</code> class. This is the
               first item's accordion body.
@@ -56,8 +34,7 @@ export default function About() {
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button
-              class="accordion-button collapsed"
-              style = {myStyle}
+              class={`accordion-button collapsed bg-${props.mode} text-${props.mode==='light'?'dark':'light'}`}
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#flush-collapseTwo"
@@ -72,7 +49,7 @@ export default function About() {
             class="accordion-collapse collapse"
             data-bs-parent="#accordionFlushExample"
           >
-            <div class="accordion-body" style = {myStyle}>
+            <div class={`accordion-body bg-${props.mode} text-${props.mode==='light'?'dark':'light'}`}>
               Placeholder content for this accordion, which is intended to
               demonstrate the <code>.accordion-flush</code> class. This is the
               second item's accordion body. Let's imagine this being filled with
@@ -83,8 +60,7 @@ export default function About() {
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button
-              class="accordion-button collapsed"
-              style = {myStyle}
+              class={`accordion-button collapsed bg-${props.mode} text-${props.mode==='light'?'dark':'light'}`}
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#flush-collapseThree"
@@ -99,7 +75,7 @@ export default function About() {
             class="accordion-collapse collapse"
             data-bs-parent="#accordionFlushExample"
           >
-            <div class="accordion-body" style = {myStyle}>
+            <div class={`accordion-body bg-${props.mode} text-${props.mode==='light'?'dark':'light'}`}>
               Placeholder content for this accordion, which is intended to
               demonstrate the <code>.accordion-flush</code> class. This is the
               third item's accordion body. Nothing more exciting happening here
@@ -110,10 +86,6 @@ export default function About() {
           </div>
         </div>
       </div>
-      <div className="container my-3">
-        <button className="btn btn-primary" onClick={toggleStyle}>{buttonText}</button>
-      </div>
-      
     </div>
   );
 }
